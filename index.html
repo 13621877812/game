@@ -1,5 +1,47 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" id="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"><meta http-equiv="cache-control" content="no-cache,no-store, must-revalidate"><meta http-equiv="pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta name="format-detection" content="telephone=no, email=no"><link rel="icon" href="logo.png"><title>Game</title><style>html,body {
-      height: 100%;
-      background-color: rgb(243, 243, 243); 
-      
-    }</style><link href="css/chunk-1b81642b.23abe9a3.css" rel="prefetch"><link href="css/chunk-690b9fa4.615cd786.css" rel="prefetch"><link href="css/chunk-7cf18b6e.aeac9e1c.css" rel="prefetch"><link href="js/chunk-1b81642b.d6b028bf.js" rel="prefetch"><link href="js/chunk-2d0c868e.7a8cdc73.js" rel="prefetch"><link href="js/chunk-690b9fa4.d4af068f.js" rel="prefetch"><link href="js/chunk-7cf18b6e.667e77c8.js" rel="prefetch"><link href="css/app.3cc9cb61.css" rel="preload" as="style"><link href="css/chunk-vendors.331f546b.css" rel="preload" as="style"><link href="js/app.4d27b6c9.js" rel="preload" as="script"><link href="js/chunk-vendors.384cde27.js" rel="preload" as="script"><link href="css/chunk-vendors.331f546b.css" rel="stylesheet"><link href="css/app.3cc9cb61.css" rel="stylesheet"></head><body><div id="app"></div><script src="js/chunk-vendors.384cde27.js"></script><script src="js/app.4d27b6c9.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <title>menu</title>
+</head>
+<body>
+  <div class="page">
+    <div class="menu-box">
+      <div class="menu">
+        <img src="./img/menu1.png" alt="" srcset="">
+        <span>步行</span>
+      </div>
+      <div class="menu">
+        <img src="./img/menu2.png" alt="" srcset="">
+        <span>跑步</span>
+      </div>
+      <div class="menu">
+        <img src="./img/menu3.png" alt="" srcset="">
+        <span>驾车</span>
+      </div>
+      <div class="menu">
+        <img src="./img/menu4.png" alt="" srcset="">
+        <span>地铁</span>
+      </div>
+    </div>
+    <div class="title-box">
+     <div class="line"></div>
+     <p>内容介绍</p> 
+    </div>
+  </div>
+  <script>
+   var menus = document.getElementsByClassName("menu");
+   for (let index = 0; index < menus.length; index++) {
+     const menu = menus[index];
+     menu.onclick = function(){
+        location.href = './map.html?type='+index;
+     }
+   }
+  </script>
+</body>
+
+</html>
