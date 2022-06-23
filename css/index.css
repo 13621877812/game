@@ -1,0 +1,61 @@
+html,body {
+  width: 100%;
+  height: 100%;
+  font-family: "微软雅黑";
+  background-color: #f0f0f0;
+ }
+ body {
+   margin: 0 auto;
+   max-width: 675px;
+ }
+ .page {
+   padding: 15px;
+ }
+ .menu-box {
+   padding: 15px 0;
+   border-radius: 5px;
+   background-color: white;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+ }
+ .menu-box .menu {
+   flex: 1;
+   font-size: 15px;
+   color: gray;
+   display: inline-block;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   cursor: pointer;
+ }
+ .menu-box .menu img {
+  width: 50px;
+  height: 50px;
+ }
+ .title-box {
+  margin-top: 15px;
+  height: 60px;
+  line-height: 60px;
+  background-color: white;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ }
+ .title-box .line {
+   margin-right: 15px;
+   width: 4px;
+   height: 20px;
+   border-radius: 2px;
+   background-color: rgb(222, 99, 33);
+ }
+ #map_canvas {
+  width: 100%;
+  height: 500px;
+}
+
+#result {
+  width: 100%;
+}
