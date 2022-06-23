@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>map</title>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=ge89SBwG5iADWnbcMgM6huNIlaAmD2wZ"></script>
+</head>
+<body>
+    <div id="map_canvas"></div>
+    <script>
+        //当前用户的位置和线
+        var marker,polyline,map,poiList;
+        configMap();
+        
+        let startPoint = [116.399, 39.910];
+        // addMarker(startPoint);
+        // drawLine(startPoint);
+        setInterval(() => {
+          getUserLocation();
+        }, 2000);
+         //地图配置
+        function configMap(){
+          map = new BMap.Map('map_canvas');
+          map.enableScrollWheelZoom();
+          map.centerAndZoom(new BMap.Point(116.404, 39.915), 13);
+        }
+        //添加折线
+        function drawLine(onePoint){
+            if (poiList == undefined) poiList = [];
+            //构建折线的点
+            poiList.push(new BMap.Point(onePoint)); 
+            if(poiList.length == 1)return;
+            if(polyline)map.removeOverlay(polyline);
+            //2.根据坐标画折线
+            polyline = new BMap.Polyline(poiList, 
+            { strokeColor: "blue", strokeWeight: 6, strokeOpacity: 0.5 });
+            // 添加到map
+            map.addOverlay(polyline);   
+        }
+        function addMarker (onePoint) {
+             if (marker) {
+                map.removeOverlay(marker); 
+             }
+            //  let mapPoint = new BMap.Point(onePoint) 
+             marker = new BMap.Marker(onePoint);
+            //  let markerText = {
+            //     position:marker,
+            //     offset:new BMap.Size(0,36)
+            //  };
+            //  let content = `<p>eden</p>`;
+            //  let labelGoodUp = new BMap.Label(content,markerText);
+            //  labelGoodUp.setStyle({
+            //     position:'absolute',
+            //     top:'-30',
+            //     padding:'0',
+            //     border:'none'
+            //  });
+            //  marker.setLabel(labelGoodUp);
+             map.addOverlay(marker);
+             marker.setAnimation(BMAP_ANIMATION_DROP);
+         }
+        //定位
+        function getUserLocation(){
+            var geolocation = new BMap.Geolocation();
+            geolocation.getCurrentPosition(function(r){
+              if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                addMarker(r.point);
+                drawLine(r.point);
+                // var mk = new BMap.Marker(r.point);
+
+                // map.addOverlay(mk);
+                map.panTo(r.point);
+                // alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+             }else {
+                alert('failed' + this.getStatus());
+             }        
+           });
+         }
+       
+    </script>
+</body>
+</html>
